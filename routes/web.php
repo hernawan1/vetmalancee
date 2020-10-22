@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('/auth/register');
 });
+Route::get('/admin','AdminController@home')->name('admin');
+Route::get('/produk', 'AdminController@produk')->name('produk');
+Route::get('/pengemasan', 'AdminController@pengemasan')->name('pengemasan');
+Route::get('/ongkir', 'AdminController@ongkir')->name('ongkir');
