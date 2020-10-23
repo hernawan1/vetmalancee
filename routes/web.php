@@ -17,6 +17,13 @@ Route::get('/', function () {
     return view('/auth/register');
 });
 Route::get('/admin','AdminController@home')->name('admin');
-Route::get('/produk', 'AdminController@produk')->name('produk');
+
+Route::get('/produk', 'ProdukController@index')->name('produk');
+
+Route::post('produk/create','ProdukController@store');
+Route::get('produk/delete/{id}','ProdukController@delete');
+Route::get('produk/view/{id}', 'ProdukController@view');
+Route::post('produk/update/{id}', 'ProdukController@update');
+
 Route::get('/pengemasan', 'AdminController@pengemasan')->name('pengemasan');
 Route::get('/ongkir', 'AdminController@ongkir')->name('ongkir');

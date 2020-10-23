@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('midtrans', 'MidtransController@payment');
+
+Route::post('product/store', 'ProdukController@store');
+Route::get('product', 'ProdukController@index');
