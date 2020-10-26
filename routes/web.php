@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/auth/register');
+    return view('/produk/index');
 });
+
 Route::get('/admin','AdminController@home')->name('admin');
+
+
 //PRODUK
 Route::get('/produk/{id}', 'ProdukController@index')->name('produk');
 Route::post('produk/create','ProdukController@addproduk')->name('addproduk');
@@ -31,3 +34,4 @@ Route::post('stock/create','ProdukController@addstock')->name('addstock');
 Route::get('/statusbarang', 'AdminController@status')->name('status');
 Route::get('/pengemasan', 'AdminController@pengemasan')->name('pengemasan');
 Route::get('/ongkir', 'AdminController@ongkir')->name('ongkir');
+

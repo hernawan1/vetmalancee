@@ -78,13 +78,48 @@
                                     </td>
                                     <td>Rp. {{ number_format($prdk->harga, 2) }}</td>
                                     <td>
-                                        <a href="{{route('stock', $prdk->id)}}"><button class="btn-pil btn-primary btn-xs"><i
+                                        <a href="{{route('stock', $prdk->id)}}"><button
+                                                class="btn-pil btn-primary btn-xs"><i
                                                     class="fa fa fa-inbox"></i></button></a>
-                                        <a href=""><button class="btn-pil btn-warning btn-xs"><i
-                                                    class="fa fa-pencil"></i></button></a>
-                                        <button class="btn-pil btn-danger btn-xs" data-toggle="modal"
-                                            data-target="#exampleModalCoba"><i class="fa fa-trash"></i></button>
+                                        <!-- <button class="btn-pil btn-warning btn-xs" type="button" data-toggle="modal"
+                                            data-target="#modaledit{{$prdk->id}}" data-whatever="@mdo"><i
+                                                class="fa fa-pencil"></i></button> -->
+                                        <button class="btn-pil btn-warning btn-xs" type="button" data-toggle="modal"
+                                            data-target="#exampleModalgetbootstrap{{$prdk->id}}" data-whatever="@getbootstrap"><i
+                                                class="fa fa-pencil"></i></button>
                                     </td>
+                                    <div class="modal fade" id="exampleModalgetbootstrap{{$prdk->id}}" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">New message</h5>
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="form-group">
+                                                            <label class="col-form-label"
+                                                                for="recipient-name">Recipient:</label>
+                                                            <input class="form-control" type="text"
+                                                                value="{{$prdk->nama}}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-form-label"
+                                                                for="message-text">Message:</label>
+                                                            <textarea class="form-control"></textarea>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button class="btn btn-primary" type="button">Send message</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </tr>
                                 <?php
                                 $no++

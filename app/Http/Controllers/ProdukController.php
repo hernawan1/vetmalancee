@@ -51,6 +51,9 @@ class ProdukController extends Controller
 			$produk->maks_besar = $request->maks_besar;
 			$produk->maks_sedang = $request->maks_sedang;
 			$produk->maks_kecil = $request->maks_kecil;
+			$produk->rasio_kecil = 1/$request->maks_kecil;
+			$produk->rasio_sedang = 1/$request->maks_sedang;
+			$produk->rasio_besar = 1/$request->maks_besar;
 			$produk->save();
 			return redirect()->back()->with('success','Data berhasil diinput');
 		}else{

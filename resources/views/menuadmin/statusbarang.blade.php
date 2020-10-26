@@ -15,7 +15,7 @@
             <a class="" id="pills-bayar-tab" data-toggle="pill" href="#pills-bayar" role="tab"
                 aria-controls="pills-bayar" aria-selected="true">
                 <div class="card o-hidden">
-                    <div class="bg-primary b-r-4 card-body">
+                    <div class="bg-secondary b-r-4 card-body">
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="dollar-sign"></i></div>
                             <div class="media-body"><span class="m-0">Belum Dibayar</span>
@@ -30,7 +30,7 @@
             <a id="pills-proses-tab" data-toggle="pill" href="#pills-proses"
                 role="tab" aria-controls="pills-proses" aria-selected="false">
                 <div class="card o-hidden">
-                    <div class="bg-secondary b-r-4 card-body">
+                    <div class="bg-primary b-r-4 card-body">
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="clock"></i></div>
                             <div class="media-body"><span class="m-0">Sedang Diproses</span>
@@ -45,7 +45,7 @@
             <a id="pills-pengiriman-tab" data-toggle="pill" href="#pills-pengiriman"
                 role="tab" aria-controls="pills-pengiriman" aria-selected="false">
                 <div class="card o-hidden">
-                    <div class="bg-primary b-r-4 card-body">
+                    <div class="bg-warning b-r-4 card-body">
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="truck"></i></div>
                             <div class="media-body"><span class="m-0">Pengiriman</span>
@@ -60,7 +60,7 @@
             <a id="pills-selesai-tab" data-toggle="pill" href="#pills-selesai"
                 role="tab" aria-controls="pills-selesai" aria-selected="false">
                 <div class="card o-hidden">
-                    <div class="bg-primary b-r-4 card-body">
+                    <div class="bg-success b-r-4 card-body">
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="check-circle"></i></div>
                             <div class="media-body"><span class="m-0">Selesai</span>
@@ -74,7 +74,7 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-bayar" role="tabpanel" aria-labelledby="pills-bayar-tab">
-            <p class="mb-0 m-t-30">belum dibayar</p>
+           @include('viewtracking.belumdibayar')
         </div>
         <div class="tab-pane fade" id="pills-proses" role="tabpanel" aria-labelledby="pills-proses-tab">
             <p class="mb-0 m-t-30">diproses</p>
