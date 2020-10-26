@@ -30,35 +30,17 @@
                     </div>
                     <div class="card-body">
                       <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-sm-6 col-md-6">
                           <div class="form-group mb-3">
                           
                             <label class="form-label">Nama Produk</label>
                             <input class="form-control" type="text" value="{{$produk->nama}}" name="nama">
                           </div>
                         </div>
-                        <div class="col-sm-6 col-md-3">
-                          <div class="form-group mb-3">
-                            <label class="form-label">Stock Produk</label>
-                            <input class="form-control" type="number" value="{{$produk->stock}}" name="stock">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-6">
                           <div class="form-group mb-3">
                             <label class="form-label">Harga Produk</label>
                             <input class="form-control" type="text" value="{{$produk->harga}}" name="harga">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                          <div class="form-group mb-3">
-                            <label class="form-label">Kode Produksi Produk</label>
-                            <input class="form-control" type="text" value="{{$produk->code_produksi}}" name="code_produksi">
-                          </div>
-                        </div>
-                        <div class="col-sm-6 col-md-6">
-                          <div class="form-group mb-3">
-                            <label class="form-label">Tanggal Kadaluarsa</label>
-                            <input class="form-control" type="date" value="{{$produk->tgl_exp}}" name="tgl_exp">
                           </div>
                         </div>
                         <div class="col-sm-6 col-md-6">

@@ -22,15 +22,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
-            @if ($message = Session::get('success'))
+            @if ($message = Session::get('berhasil'))
             <div class="alert alert-success dark alert-dismissible fade show" role="alert">
-                <p>Data Produk Berhasil Ditambah!!!</p>
+                <p>Stock Produk Berhasil Ditambah!!!</p>
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
-            @elseif($message = Session::get('danger'))
+            @elseif($message = Session::get('sukses'))
             <div class="alert alert-danger dark alert-dismissible fade show" role="alert">
-                <p>Data Produk Sudah Ada!!!</p>
+                <p>Stock Produk Telah Dihapus!!!</p>
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
@@ -47,6 +47,7 @@
                                     <th>Code Produksi</th>
                                     <th>tanggal Ecpiyed</th>
                                     <th>Stock</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,14 +62,31 @@
                                     <td>{{$stk->code_produksi}}</td>
                                     <td>{{$stk->tgl_exp}}</td>
                                     <td>{{$stk->stock}}</td>
-                                    <!-- <td>
-                                        <a href=""><button class="btn-pil btn-primary btn-xs"><i
-                                                    class="fa fa fa-inbox"></i></button></a>
-                                        <a href=""><button class="btn-pil btn-warning btn-xs"><i
-                                                    class="fa fa-pencil"></i></button></a>
-                                        <button class="btn-pil btn-danger btn-xs" data-toggle="modal"
-                                            data-target="#exampleModalCoba"><i class="fa fa-trash"></i></button>
-                                    </td> -->
+                                    <td>
+                                    <button class="btn-pil btn-danger btn-xs" type="button" data-toggle="modal"
+                                            data-target="#exampleModalgetbootstrap{{$stk->id}}" data-whatever="@getbootstrap"><i
+                                                class="fa fa-trash"></i></button>
+                                    </td>
+                                    <div class="modal fade" id="exampleModalgetbootstrap{{$stk->id}}" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Yakin Data {{$stk->code_produksi}} Mau Dihapus ?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-danger" type="button"
+                                                        data-dismiss="modal">Ga Jadi Deh</button>
+                                                    <a href="{{route('deletestock', $stk->id)}}">
+                                                        <button class="btn btn-primary" type="button">Ya Dong !</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </td>
                                 </tr>
                                 @endforeach
                                 <?php

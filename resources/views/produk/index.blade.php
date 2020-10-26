@@ -29,6 +29,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="display" id="advance-1">
+<<<<<<< Updated upstream
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -79,6 +80,37 @@
                                     <th>Tanggal Kadaluarsa</th>
                                 </tr>
                             </tfoot>
+=======
+                        <thead>
+								<tr>
+									<th>Nama Produk</th>
+									<th>Harga</th>
+									<th>Jenis Kategori</th>
+									<th>Aksi</th>
+								</tr>
+							</thead>
+							<tbody>
+							@foreach($produk as $produk)
+								<tr>
+									<td>{{$produk->nama}}</td>
+									<td>{{$produk->harga}}</td>
+									<td>{{$produk->jenis_kategori}}</td>
+									<td>
+                                        <a href="/stock/{{$produk->id}}"><button class="btn-pil btn-info btn-xs"><i class="fa fa-eye"></i></button></a>
+										<a href="/produk/view/{{$produk->id}}"><button class="btn-pil btn-warning btn-xs"><i class="fa fa-pencil"></i></button></a>
+										<button class="btn-pil btn-danger btn-xs" data-toggle="modal" data-target="#exampleModalCoba" ><i class="fa fa-trash"></i></button>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
+							<tfoot>
+								<tr>
+									<th>Nama Produk</th>
+									<th>Harga</th>
+									<th>Jenis Kategori</th>
+								</tr>
+							</tfoot>
+>>>>>>> Stashed changes
                         </table>
                     </div>
                 </div>
@@ -211,11 +243,14 @@
                         <label class="col-form-label" for="recipient-name">Nama Produk:</label>
                         <input class="form-control" placeholder="Nama Produk" name="nama" type="text">
                     </div>
+<<<<<<< Updated upstream
 
                     <div class="form-group">
                         <label for="inputEmail4">Stock Produk</label>
                         <input name="stock" type="number" class="form-control" placeholder="Stock Produk">
                     </div>
+=======
+>>>>>>> Stashed changes
                     <div class="form-group">
                         <label class="col-form-label" for="recipient-name">Harga Produk:</label>
                         <div class="input-group">
@@ -231,14 +266,6 @@
                             <label for="input-file-1">File input</label>
                             <input id="input-file-1" type="file" name="gambar">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-form-label" for="recipient-name">Kode Produksi:</label>
-                        <input class="form-control" name="code_produksi" type="text" placeholder="Kode Produksi Produk">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tanggal Kadaluarsa</label>
-                        <input name="tgl_exp" type="date" class="form-control">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label" for="recipient-name">Dosis Produk:</label>

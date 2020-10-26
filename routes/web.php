@@ -14,24 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('/produk/index');
+    return view('menuadmin.produk');
 });
 
 Route::get('/admin','AdminController@home')->name('admin');
 
-
 //PRODUK
 Route::get('/produk/{id}', 'ProdukController@index')->name('produk');
 Route::post('produk/create','ProdukController@addproduk')->name('addproduk');
-Route::get('produk/delete/{id}','ProdukController@delete');
-Route::get('produk/view/{id}', 'ProdukController@view');
-Route::post('produk/update/{id}', 'ProdukController@update');
+Route::get('produk/delete/{id}','ProdukController@delete')->name('deleteproduk');
+Route::post('produk/update/{id}', 'ProdukController@update')->name('updateproduk');
 
 //STOCK
 Route::get('/stock/{id}','ProdukController@stock')->name('stock');
 Route::post('stock/create','ProdukController@addstock')->name('addstock');
+Route::get('stock/delete/{id}', 'ProdukController@deletestock')->name('deletestock');
 
 Route::get('/statusbarang', 'AdminController@status')->name('status');
+
 Route::get('/pengemasan', 'AdminController@pengemasan')->name('pengemasan');
 Route::get('/ongkir', 'AdminController@ongkir')->name('ongkir');
 

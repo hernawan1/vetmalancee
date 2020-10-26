@@ -21,8 +21,7 @@ class ProdukController extends Controller
 			$kate=$kt->nama;
 		}
 		$produk = DB::table('produk')->where('jenis_kategori',$kate)->get();
-		// dd($kategori);
-    	return view('menuadmin.produk',['data_kategori'=>$kategoriproduk,'produk'=>$produk, 'kategori'=>$kate]);
+    	return view('menuadmin.produk',['data_kategori'=>$kategoriproduk, 'produk'=>$produk, 'kategori'=>$kate]);
 	}
     public function addproduk(Request $request)
     {
@@ -57,7 +56,7 @@ class ProdukController extends Controller
 			$produk->save();
 			return redirect()->back()->with('success','Data berhasil diinput');
 		}else{
-			return redirect()->back()->with(['danger' => 'Daftar Promo Sudah Aktif']);
+			return redirect()->back()->with(['danger' => 'Produk yang Anda tambahkan telah ada']);
 		}
 	}
 
@@ -92,7 +91,7 @@ class ProdukController extends Controller
             'stock' => $stockbaru ,
           );
 		DB::table('produk')->where('id',$request->id)->update($form_data);
-		return redirect()->back();
+		return redirect()->back()->with('berhasil','Stock Berhasil Ditambahkan');
 	}
 	
 	public function view($id)
@@ -120,14 +119,25 @@ class ProdukController extends Controller
 				'rasio_sedang' => $rasio_sedang,
 				'rasio_kecil' => $rasio_kecil,
 			]);
-    	return redirect('/produk')->with('sukses','Data berhasil diupdate');
+    	return redirect()->back()->with('update','Data berhasil diupdate');
 	}
 	
 	public function delete($id)
     {
     	$produk= Produk::find($id);
-    	$produk->delete($produk);
-    	return redirect('/produk')->with('sukses','Data berhasil dihapus');
+		$produk->delete($produk);
+		
+		$stock = DB::table('stock')->where('id_produk',$id)->delete();
+		
+
+    	return redirect()->back()->with('delete','Data berhasil dihapus');
+	}
+
+	public function deletestock($id)
+	{
+		$stock = Stock::find($id);
+		$stock->delete($stock);
+		return redirect()->back()->with('sukses','Data Berhasil Dihapus');
 	}
 
 }

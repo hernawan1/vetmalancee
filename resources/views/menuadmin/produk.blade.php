@@ -37,6 +37,18 @@
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
+            @elseif($message = Session::get('update'))
+            <div class="alert alert-success dark alert-dismissible fade show" role="alert">
+                <p>Data Produk Berhasil Diperbarui !!!</p>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            @elseif($message = Session::get('delete'))
+            <div class="alert alert-danger dark alert-dismissible fade show" role="alert">
+                <p>Data Produk Telah Dihapus !!</p>
+                <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
             @endif
         </div>
         <div class="col-sm-12">
@@ -81,41 +93,129 @@
                                         <a href="{{route('stock', $prdk->id)}}"><button
                                                 class="btn-pil btn-primary btn-xs"><i
                                                     class="fa fa fa-inbox"></i></button></a>
-                                        <!-- <button class="btn-pil btn-warning btn-xs" type="button" data-toggle="modal"
-                                            data-target="#modaledit{{$prdk->id}}" data-whatever="@mdo"><i
-                                                class="fa fa-pencil"></i></button> -->
                                         <button class="btn-pil btn-warning btn-xs" type="button" data-toggle="modal"
                                             data-target="#exampleModalgetbootstrap{{$prdk->id}}" data-whatever="@getbootstrap"><i
                                                 class="fa fa-pencil"></i></button>
+                                        <button class="btn-pil btn-danger btn-xs" type="button" data-toggle="modal"
+                                            data-target="#exampleModal{{$prdk->id}}" data-whatever="@getbootstrap"><i
+                                                class="fa fa-trash"></i></button>
                                     </td>
                                     <div class="modal fade" id="exampleModalgetbootstrap{{$prdk->id}}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">New message</h5>
+                                                    <h5 class="modal-title">Edit Data {{$prdk->nama}}</h5>
                                                     <button class="close" type="button" data-dismiss="modal"
                                                         aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form>
-                                                        <div class="form-group">
-                                                            <label class="col-form-label"
-                                                                for="recipient-name">Recipient:</label>
-                                                            <input class="form-control" type="text"
-                                                                value="{{$prdk->nama}}">
+                                                <form class="card" action="{{route('updateproduk', $prdk->id)}}" method="POST" enctype="multipart/form-data">
+                                                {{csrf_field()}}
+                                                    <div class="row">
+                                                        <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                        
+                                                            <label class="form-label">Nama Produk</label>
+                                                            <input class="form-control" type="text" value="{{$prdk->nama}}" name="nama">
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="col-form-label"
-                                                                for="message-text">Message:</label>
-                                                            <textarea class="form-control"></textarea>
                                                         </div>
-                                                    </form>
+                                                        <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                            <label class="form-label">Harga Produk</label>
+                                                            <input class="form-control" type="text" value="{{$prdk->harga}}" name="harga">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                            <label for="formcontrol-select1">Wadah Produk:</label>
+                                                                <select class="form-control btn-square" name="wadah">
+                                                                    <option value="{{$prdk->wadah}}">{{$prdk->wadah}}</option>
+                                                                    <option value="Vaksin">Vaksin</option>
+                                                                    <option value=""></option>
+                                                                    <option value="k"></option>
+                                                                </select>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                        <label for="inputState">Jenis Kategori</label>
+                                                            <select id="inputState" class="form-control" name="jenis_kategori">
+                                                                <option value="{{$prdk->jenis_kategori}}">{{$prdk->jenis_kategori}}</option>
+                                                                <option value="antisera">Antisera</option>
+                                                                <option value="antigen">Antigen</option>
+                                                                <option value="kit elisa">Kit Elisa</option>
+                                                            </select>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-4">
+                                                        <div class="form-group mb-3">
+                                                            <label class="form-label">Maksimal Wadah Kecil</label>
+                                                            <input class="form-control" type="text" value="{{$prdk->maks_kecil}}" name="maks_kecil">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-4">
+                                                        <div class="form-group mb-3">
+                                                            <label class="form-label">Maksimal Wadah Sedang</label>
+                                                            <input class="form-control" type="number" value="{{$prdk->maks_sedang}}" name="maks_sedang">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-4">
+                                                        <div class="form-group mb-3">
+                                                            <label class="form-label">Maksimal Wadah Besar</label>
+                                                            <input class="form-control" type="number" value="{{$prdk->maks_besar}}" name="maks_besar">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                            <label class="form-label">Satuan Isi</label>
+                                                            <input class="form-control" type="text" value="{{$prdk->satuan_isi}}" name="satuan_isi">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-md-6">
+                                                        <div class="form-group mb-3">
+                                                        <label class="form-label">Indikasi Produk</label>
+                                                            <input class="form-control" type="text" value="{{$prdk->indikasi}}" name="indikasi">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                        <div class="form-group mb-3 mb-0">
+                                                            <label class="form-label">Deskripsi Produk</label>
+                                                            <textarea class="form-control" name="deskripsi" rows="5" placeholder="Enter About your description">{{$prdk->deskripsi}}</textarea>
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                        <div class="form-group mb-3">
+                                                        <label class="form-label">Gambar Produk</label>
+                                                            <input class="form-control" type="file" name="gambar">
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                        <button class="btn btn-primary" type="submit">Simpan</button>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="exampleModal{{$prdk->id}}" tabindex="-1" role="dialog"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Yakin Data {{$prdk->nama}} Mau Dihapus ?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button"
-                                                        data-dismiss="modal">Close</button>
-                                                    <button class="btn btn-primary" type="button">Send message</button>
+                                                        data-dismiss="modal">Gak Jadi Deh</button>
+                                                    <a href="{{route('deleteproduk', $prdk->id)}}">
+                                                        <button class="btn btn-primary" type="button">Ya Dong !</button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
