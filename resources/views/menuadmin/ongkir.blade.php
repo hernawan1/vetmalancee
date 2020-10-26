@@ -147,7 +147,7 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
-                                    <th>Jenis ongkir</th>
+                                    <th>Nama Kota</th>
                                     <th>Harga</th>
                                 </tr>
                             </tfoot>
