@@ -94,12 +94,6 @@ class ProdukController extends Controller
 		return redirect()->back()->with('berhasil','Stock Berhasil Ditambahkan');
 	}
 	
-	public function view($id)
-    {
-    	$produk= Produk::find($id);
-    	return view('produk/view', ['produk'=>$produk]);
-	}
-	
 	public function update(Request $request,$id)
     {
     	$produk= Produk::find($id);
