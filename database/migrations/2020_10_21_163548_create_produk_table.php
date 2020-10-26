@@ -18,13 +18,10 @@ class CreateProdukTable extends Migration
             $table->integer('id_user');
             $table->string('gambar');
             $table->integer('harga');
-            $table->integer('code_produksi');
-            $table->date('tgl_exp');
             $table->string('dosis');
             $table->string('satuan_isi');
             $table->string('jenis_kategori');
             $table->string('wadah');
-            $table->integer('stock');
             $table->string('indikasi');
             $table->string('deskripsi');
             $table->float('rasio_sedang');

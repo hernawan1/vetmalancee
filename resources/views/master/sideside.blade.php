@@ -38,11 +38,11 @@
                 <li class="sidebar-list">
                     <label class="badge badge-danger">New</label><a class="sidebar-link sidebar-title" href="#"><i
                             data-feather="box"></i><span>Produk</span></a>
-
                     <ul class="sidebar-submenu">
-                        @foreach($data_kategori as $kategori)
-                        <li><a href="{{route('produk', $kategori->id)}}">{{$kategori->nama}}</a></li>
-                        @endforeach
+                        <li><a href="{{route('produk')}}">Vaksin</a></li>
+                        <li><a href="projectcreate.html">Antigen</a></li>
+                        <li><a href="projectcreate.html">Antisera</a></li>
+                        <li><a href="projectcreate.html">Kit Elisa</a></li>
                     </ul>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"

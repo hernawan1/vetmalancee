@@ -7,7 +7,7 @@
                 <h3>Kategori Pengemasan Pusvetma</h3>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html"><i data-feather="package"></i></a></li>
-                    <li class="breadcrumb-item">Tabel Produk</li>
+                    <li class="breadcrumb-item">Tabel Pengemasan</li>
                 </ol>
             </div>
             <div class="col-6">

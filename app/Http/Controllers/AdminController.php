@@ -3,19 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class AdminController extends Controller
 {
     public function home(){
-        return view('menuadmin/dashboard');
+        $kategoriproduk = DB::table('kategoriproduk')->get();
+        return view('menuadmin/dashboard', ['data_kategori'=>$kategoriproduk]);
     }
     public function produk(){
-        return view('menuadmin/produk');
+        $kategoriproduk = DB::table('kategoriproduk')->get();
+        return view('menuadmin/produk', ['data_kategori'=>$kategoriproduk]);
     }
     public function pengemasan(){
-        return view('menuadmin/pengemasan');
+        $kategoriproduk = DB::table('kategoriproduk')->get();
+        return view('menuadmin/pengemasan', ['data_kategori'=>$kategoriproduk]);
     }
     public function ongkir(){
-        return view('menuadmin/ongkir');
+        $kategoriproduk = DB::table('kategoriproduk')->get();
+        return view('menuadmin/ongkir', ['data_kategori'=>$kategoriproduk]);
+    }
+    public function status(){
+        $kategoriproduk = DB::table('kategoriproduk')->get();
+        return view('menuadmin/statusbarang', ['data_kategori'=>$kategoriproduk]);
     }
 }
