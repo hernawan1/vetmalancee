@@ -19,6 +19,12 @@ Route::get('/', function () {
 
 Route::get('/admin','AdminController@home')->name('admin');
 
+//USER
+Route::get('/user', 'UserController@index')->name('user');
+Route::post('user/create','UserController@create')->name('adduser');
+Route::get('user/delete/{id}','UserController@delete')->name('deleteuser');
+Route::post('user/update/{id}', 'UserController@update')->name('updateuser');
+
 //PRODUK
 Route::get('/produk/{id}', 'ProdukController@index')->name('produk');
 Route::post('produk/create','ProdukController@addproduk')->name('addproduk');
@@ -41,6 +47,12 @@ Route::get('/ongkir', 'OngkirController@index')->name('ongkir');
 Route::post('ongkir/create','OngkirController@create')->name('addongkir');
 Route::get('ongkir/delete/{id}','OngkirController@delete')->name('deleteongkir');
 Route::post('ongkir/update/{id}', 'OngkirController@update')->name('updateongkir');
+
+//BERITA
+Route::get('/berita', 'BeritaController@index')->name('berita');
+Route::post('berita/create','BeritaController@create')->name('addberita');
+Route::get('berita/delete/{id}','BeritaController@delete')->name('deleteberita');
+Route::post('berita/update/{id}', 'BeritaController@update')->name('updateberita');
 
 Route::get('/statusbarang', 'AdminController@status')->name('status');
 

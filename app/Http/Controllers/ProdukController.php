@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use DB;
 use App\Produk;
 use App\Stock;
-use File;
 use Validator;
 
 class ProdukController extends Controller
@@ -97,12 +96,12 @@ class ProdukController extends Controller
 	public function update(Request $request,$id)
     {
     	$produk= Produk::find($id);
-        if ($request->hasFile('gambar')) {
+		$produk->update($request->all());
+		if ($request->hasFile('gambar')) {
             $request->file('gambar')->move('images/',$request->file('gambar')->getClientOriginalName());
             $produk->gambar = $request->file('gambar')->getClientOriginalName();
             $produk->save();
         }
-		$produk->update($request->all());
 
 		$rasio_kecil = 1/$request->maks_kecil*100;
 		$rasio_sedang = 1/$request->maks_sedang*100;

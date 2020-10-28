@@ -35,6 +35,8 @@
                         <p class="lan-9">Ready to use Apps</p>
                     </div>
                 </li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('user')}}"><i
+                            data-feather="users"> </i><span>User</span></a></li>
                 <li class="sidebar-list">
                     <label class="badge badge-danger">New</label><a class="sidebar-link sidebar-title" href="#"><i
                             data-feather="box"></i><span>Produk</span></a>
@@ -51,6 +53,8 @@
                             data-feather="truck"> </i><span>Ongkos Kirim</span></a></li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('status')}}"><i
                             data-feather="flag"> </i><span>Status Barang</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('berita')}}"><i
+                            data-feather="file"> </i><span>Berita</span></a></li>
             </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
