@@ -56,6 +56,7 @@
                                     <th>Judul</th>
                                     <th>Deskripsi</th>
                                     <th>Gambar</th>
+                                    <th>Author</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -73,6 +74,7 @@
                                     <td>
                                         <center><img width="150" src="{{ url('/images/'.$berita->gambar) }}"></center>
                                     </td>
+                                    <td>{{$berita->nama}}</td>
                                     <td>
                                         <button class="btn-pil btn-warning btn-xs" type="button" data-toggle="modal"
                                             data-target="#exampleModalEdit{{$berita->id}}" data-whatever="@getbootstrap"><i
@@ -151,6 +153,7 @@
                                     <th>Judul</th>
                                     <th>Deskripsi</th>
                                     <th>Gambar</th>
+                                    <th>Author</th>
                                 </tr>
                             </tfoot>
                         </table>

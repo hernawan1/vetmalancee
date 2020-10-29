@@ -10,7 +10,10 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $berita = Berita::all();
+        $berita = DB::table('berita')
+                    ->join('user', 'user.id', '=', 'berita.id_user')
+                    ->select('user.nama', 'berita.judul', 'berita.gambar', 'berita.deskripsi','berita.id')
+                    ->get();
         $kategoriproduk = DB::table('kategoriproduk')->get();
         return view('menuadmin.berita', ['berita'=>$berita, 'data_kategori'=>$kategoriproduk]);
     }
@@ -25,6 +28,7 @@ class BeritaController extends Controller
             $berita->judul = $request->judul;
             $berita->deskripsi = $request->deskripsi;
             $berita->gambar = $new_name;
+            $berita->id_user = auth()->user()->id;
             $berita->save();
             return redirect()->back()->with('success','Berhasil Tambah');
     }

@@ -56,7 +56,7 @@ class UserController extends Controller
         User::whereId($request->id)->update($form_data);
         
         if ($request->password != '' && $request->password != null) {
-            DB::table('users')->where('id', $request->id)->update(['password' => bcrypt($request->password)]);
+            DB::table('user')->where('id', $request->id)->update(['password' => bcrypt($request->password)]);
         }
         return redirect()->back()->with('update','Berhasil Update');
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Ongkir;
 use Validator;
+use Auth;
 
 class OngkirController extends Controller
 {
@@ -28,6 +29,7 @@ class OngkirController extends Controller
             $ongkir = new ongkir;
             $ongkir->nama_kota_ongkir = $request->nama_kota_ongkir;
             $ongkir->harga = $request->harga;
+            $ongkir->id_user = auth()->user()->id;
             $ongkir->save();
             return redirect()->back()->with('success','Berhasil Tambah');
         }

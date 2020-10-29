@@ -172,7 +172,7 @@
             <li class="profile-nav onhover-dropdown p-0 mr-0">
                 <div class="media profile-media"><img class="b-r-10" src="../assets/images/dashboard/profile.jpg"
                         alt="">
-                    <div class="media-body"><span>Emay Walter</span>
+                    <div class="media-body"><span>{{auth()->user()->nama}}</span>
                         <p class="mb-0 font-roboto">Admin <i class="middle fa fa-angle-down"></i></p>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
                     <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
                     <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
                     <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
-                    <li><a href="#"><i data-feather="log-in"> </i><span>Log in</span></a></li>
+                    <li><a href="{{route ('logout')}}"><i data-feather="log-out"> </i><span>Log Out</span></a></li>
                 </ul>
             </li>
         </ul>

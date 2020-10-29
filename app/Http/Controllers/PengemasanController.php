@@ -28,6 +28,7 @@ class PengemasanController extends Controller
             $pengemasan = new Pengemasan;
             $pengemasan->jenis_pengemasan = $request->jenis_pengemasan;
             $pengemasan->harga_pengemasan = $request->harga;
+            $pengemasan->id_user =auth()->user()->id;
             $pengemasan->save();
             return redirect()->back()->with('success','Berhasil Tambah');
         }

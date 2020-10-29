@@ -42,16 +42,17 @@
             <div>
               <div class="logo"><h2 class="img-fluid for-light" >Vetmalance</h2></div>
               <div class="login-main"> 
-                <form class="theme-form" action="{{route('admin')}}">
+                <form class="theme-form" action="{{route('postlogin')}}" method="POST">
                   <h4>LOGIN Sebagai Admin</h4>
                   <p>LOGIN Untuk Menjadi Admin</p>
                   <div class="form-group">
+                  {{csrf_field()}}
                     <label class="col-form-label">Username</label>
-                    <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                    <input class="form-control" type="text" required="" placeholder="Username" name="username">
                   </div>
                   <div class="form-group">
                     <label class="col-form-label">Password</label>
-                    <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
+                    <input class="form-control" type="password" name="password" required="" placeholder="password">
                     <div class="show-hide"><span class="show"></span></div>
                   </div>
                   <div class="form-group mb-0">
