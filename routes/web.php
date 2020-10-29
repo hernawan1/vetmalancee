@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('menuadmin.produk');
+    return view('auth.register');
 });
 
 Route::get('/admin','AdminController@home')->name('admin');
@@ -24,6 +24,12 @@ Route::get('/user', 'UserController@index')->name('user');
 Route::post('user/create','UserController@create')->name('adduser');
 Route::get('user/delete/{id}','UserController@delete')->name('deleteuser');
 Route::post('user/update/{id}', 'UserController@update')->name('updateuser');
+
+//CUSTOMER
+Route::get('/customer', 'CustomerController@index')->name('customer');
+Route::post('customer/create','CustomerController@create')->name('addcustomer');
+Route::get('customer/delete/{id}','CustomerController@delete')->name('deletecustomer');
+Route::post('customer/update/{id}', 'CustomerController@update')->name('updatecustomer');
 
 //PRODUK
 Route::get('/produk/{id}', 'ProdukController@index')->name('produk');

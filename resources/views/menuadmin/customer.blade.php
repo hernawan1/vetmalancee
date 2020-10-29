@@ -1,13 +1,13 @@
 @extends('admin')
-@section('user')
+@section('customer')
 <div class="container-fluid">
     <div class="page-title">
         <div class="row">
             <div class="col-6">
-                <h3>Data User Pusvetma</h3>
+                <h3>Data Customer Pusvetma</h3>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="users"></i></a></li>
-                    <li class="breadcrumb-item">Tabel User</li>
+                    <li class="breadcrumb-item"><a href="index.html"><i data-feather="user"></i></a></li>
+                    <li class="breadcrumb-item">Tabel Customer</li>
                 </ol>
             </div>
             <div class="col-6">
@@ -28,25 +28,25 @@
         <div class="col-sm-12">
                 @if ($message = Session::get('success'))
                 <div class="alert alert-success dark alert-dismissible fade show" role="alert">
-                    <p>Data User Berhasil Ditambah!!!</p>
+                    <p>Data Customer Berhasil Ditambah!!!</p>
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
                 </div>
                 @elseif($message = Session::get('danger'))
                 <div class="alert alert-danger dark alert-dismissible fade show" role="alert">
-                    <p>Data User Sudah Ada!!!</p>
+                    <p>Data Customer Sudah Ada!!!</p>
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
                 </div>
                 @elseif($message = Session::get('update'))
                 <div class="alert alert-success dark alert-dismissible fade show" role="alert">
-                    <p>Data User Berhasil Diperbarui !!!</p>
+                    <p>Data Customer Berhasil Diperbarui !!!</p>
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
                 </div>
                 @elseif($message = Session::get('delete'))
                 <div class="alert alert-danger dark alert-dismissible fade show" role="alert">
-                    <p>Data User Telah Dihapus !!</p>
+                    <p>Data Customer Telah Dihapus !!</p>
                     <button class="close" type="button" data-dismiss="alert" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
                 </div>
@@ -60,9 +60,10 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>NIP</th>
-                                    <th>Jabatan</th>
-                                    <th>Username</th>
+                                    <th>No. Telepon</th>
+                                    <th>Email</th>
+                                    <th>Alamat</th>
+                                    <th>Gambar</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -70,64 +71,66 @@
                                 <?php
                                     $no=1;
                                 ?>
-                                @foreach($user as $user)
+                                @foreach($customer as $customer)
                                 <tr>
                                     <td>
                                         <?=$no?>
                                     </td>
-                                    <td>{{$user->nama}}</td>
-                                    <td>{{$user->NIP}}</td>
-                                    <td>{{$user->jabatan}}</td>
-                                    <td>{{$user->username}}</td>
+                                    <td>{{$customer->nama}}</td>
+                                    <td>{{$customer->telepon}}</td>
+                                    <td>{{$customer->email}}</td>
+                                    <td>{{$customer->alamat}}</td>
+                                    <td>
+                                        <center><img width="150" src="{{ url('/images/'.$customer->gambar) }}"></center>
+                                    </td>
                                     <td>
                                         <button class="btn-pil btn-warning btn-xs" type="button" data-toggle="modal"
-                                            data-target="#exampleModalEdit{{$user->id}}" data-whatever="@getbootstrap"><i
+                                            data-target="#exampleModalEdit{{$customer->id}}" data-whatever="@getbootstrap"><i
                                                 class="fa fa-pencil"></i></button>
                                         <button class="btn-pil btn-danger btn-xs" type="button" data-toggle="modal"
-                                            data-target="#exampleModal{{$user->id}}" data-whatever="@getbootstrap"><i
+                                            data-target="#exampleModal{{$customer->id}}" data-whatever="@getbootstrap"><i
                                                 class="fa fa-trash"></i></button>
                                     </td>
-                                    <div class="modal fade" id="exampleModalEdit{{$user->id}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="exampleModalEdit{{$customer->id}}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Update Data Ongkir {{$user->jenis_ongkir}}</h5>
+                                                    <h5 class="modal-title">Update Data Customer {{$customer->nama}}</h5>
                                                     <button class="close" type="button" data-dismiss="modal"
                                                         aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                <form action="{{route('updateuser', $user->id)}}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{route('updatecustomer', $customer->id)}}" method="POST" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 <div class="form-builder-2">
                                                 <div class="form-group ui-draggable-handle" style="position: static;">
                                                     <label for="formcontrol-select1">Nama :</label>
-                                                    <input class="form-control" type="text" name="nama" value="{{$user->nama}}">
+                                                    <input class="form-control" type="text" name="nama" value="{{$customer->nama}}">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-form-label" for="recipient-name">Gambar User :</label>
+                                                <div class="form-group ui-draggable-handle" style="position: static;">
+                                                    <label for="input-file-1">File input</label>
+                                                    <input id="input-file-1" type="file" name="gambar">
                                                 </div>
                                             </div>
                                             <div class="form-builder-2">
                                                 <div class="form-group ui-draggable-handle" style="position: static;">
-                                                    <label for="formcontrol-select1">NIP :</label>
-                                                    <input class="form-control" type="text" name="NIP" value="{{$user->NIP}}">
+                                                    <label for="formcontrol-select1">No. Telp :</label>
+                                                    <input class="form-control" type="text" name="telepon" value="{{$customer->telepon}}">
                                                 </div>
                                             </div>
                                             <div class="form-builder-2">
                                                 <div class="form-group ui-draggable-handle" style="position: static;">
-                                                    <label for="formcontrol-select1">Jabatan :</label>
-                                                    <input class="form-control" type="text" name="jabatan" value="{{$user->jabatan}}">
+                                                    <label for="formcontrol-select1">Email :</label>
+                                                    <input class="form-control" type="email" name="email" value="{{$customer->email}}">
                                                 </div>
                                             </div>
-                                            <div class="form-builder-2">
-                                                <div class="form-group ui-draggable-handle" style="position: static;">
-                                                    <label for="formcontrol-select1">Username :</label>
-                                                    <input class="form-control" type="text" name="username" value="{{$user->username}}">
-                                                </div>
-                                            </div>
-                                            <div class="form-builder-2">
-                                                <div class="form-group ui-draggable-handle" style="position: static;">
-                                                    <label for="formcontrol-select1">Password :</label>
-                                                    <input class="form-control" type="password" name="password">
-                                                </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Alamat :</label>
+                                                <textarea name="alamat" class="form-control" rows="3">{{$customer->alamat}}</textarea>
                                             </div>
                                                     <div class="modal-footer">
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -139,19 +142,19 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" id="exampleModal{{$user->id}}" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="exampleModal{{$customer->id}}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Data Ongkir Kota {{$user->nama_kota_ongkir}} Mau Dihapus ?</h5>
+                                                    <h5 class="modal-title">Data Customer {{$customer->nama}} Mau Dihapus ?</h5>
                                                     <button class="close" type="button" data-dismiss="modal"
                                                         aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button"
                                                         data-dismiss="modal">Gak Jadi Deh</button>
-                                                    <a href="{{route('deleteuser', $user->id)}}">
+                                                    <a href="{{route('deletecustomer', $customer->id)}}">
                                                         <button class="btn btn-primary" type="button">Ya Dong !</button>
                                                     </a>
                                                 </div>
@@ -168,9 +171,10 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama</th>
-                                    <th>NIP</th>
-                                    <th>Jabatan</th>
-                                    <th>Username</th>
+                                    <th>No. Telepon</th>
+                                    <th>Email</th>
+                                    <th>Alamat</th>
+                                    <th>Gambar</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -185,12 +189,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Form Data User</h5>
+                <h5 class="modal-title" id="exampleModalLabel2">Form Data Customer</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('adduser')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('addcustomer')}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                     <div class="form-builder-2">
                         <div class="form-group ui-draggable-handle" style="position: static;">
@@ -198,29 +202,28 @@
                             <input class="form-control" type="text" name="nama">
                         </div>
                     </div>
-                    <div class="form-builder-2">
+                    <div class="form-group">
+                        <label class="col-form-label" for="recipient-name">Gambar User :</label>
                         <div class="form-group ui-draggable-handle" style="position: static;">
-                            <label for="formcontrol-select1">NIP :</label>
-                            <input class="form-control" type="text" name="NIP">
+                            <label for="input-file-1">File input</label>
+                            <input id="input-file-1" type="file" name="gambar">
                         </div>
                     </div>
                     <div class="form-builder-2">
                         <div class="form-group ui-draggable-handle" style="position: static;">
-                            <label for="formcontrol-select1">Jabatan :</label>
-                            <input class="form-control" type="text" name="jabatan">
+                            <label for="formcontrol-select1">No. Telp :</label>
+                            <input class="form-control" type="text" name="telepon">
                         </div>
                     </div>
                     <div class="form-builder-2">
                         <div class="form-group ui-draggable-handle" style="position: static;">
-                            <label for="formcontrol-select1">Username :</label>
-                            <input class="form-control" type="text" name="username">
+                            <label for="formcontrol-select1">Email :</label>
+                            <input class="form-control" type="text" name="email">
                         </div>
                     </div>
-                    <div class="form-builder-2">
-                        <div class="form-group ui-draggable-handle" style="position: static;">
-                            <label for="formcontrol-select1">Password :</label>
-                            <input class="form-control" type="password" name="password">
-                        </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Alamat :</label>
+                        <textarea name="alamat" class="form-control" rows="3"></textarea>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>

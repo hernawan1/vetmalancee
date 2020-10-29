@@ -64,6 +64,8 @@
                @yield('ongkir')
                @yield('statusbarang')
                @yield('stock')
+               @yield('user')
+               @yield('customer')
                 <!-- Container-fluid Ends-->
             </div>
 
