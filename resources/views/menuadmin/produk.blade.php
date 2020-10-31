@@ -59,11 +59,11 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Gambar</th>
                                     <th>Nama Produk</th>
                                     <th>Stock</th>
                                     <th>Dosis</th>
                                     <th>Wadah</th>
-                                    <th>Gambar</th>
                                     <th>Harga</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -77,6 +77,9 @@
                                     <td>
                                         <?=$no?>
                                     </td>
+                                    <td>
+                                        <center><img width="64" src="{{ url('/images/'.$prdk->gambar) }}"></center>
+                                    </td>
                                     <td>{{$prdk->nama}}</td>
                                     @if($prdk->stock == null)
                                     <td>0</td>
@@ -85,9 +88,6 @@
                                     @endif
                                     <td>{{$prdk->dosis}}</td>
                                     <td>{{$prdk->wadah}}</td>
-                                    <td>
-                                        <center><img width="150" src="{{ url('/images/'.$prdk->gambar) }}"></center>
-                                    </td>
                                     <td>Rp. {{ number_format($prdk->harga, 2) }}</td>
                                     <td>
                                         <a href="{{route('stock', $prdk->id)}}"><button
@@ -322,11 +322,11 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
+                                    <th>Gambar</th>
                                     <th>Nama Produk</th>
                                     <th>Stock</th>
                                     <th>Dosis</th>
                                     <th>Wadah</th>
-                                    <th>Gambar</th>
                                     <th>Harga</th>
                                     <th>Aksi</th>
                                 </tr>

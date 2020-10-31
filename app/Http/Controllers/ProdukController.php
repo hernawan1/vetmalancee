@@ -80,7 +80,6 @@ class ProdukController extends Controller
 		$stock->tgl_exp = $request->tgl_exp;
 		$stock->stock = $request->stock;
 		$stock->save();
-
 		$stocklama = DB::table('produk')->select('stock')->where('id', $request->id)->first();
 		$stocklam = '';
 		foreach($stocklama as $stklam){
@@ -103,10 +102,10 @@ class ProdukController extends Controller
             $produk->gambar = $request->file('gambar')->getClientOriginalName();
             $produk->save();
         }
-
-		$rasio_kecil = 1/$request->maks_kecil*100;
-		$rasio_sedang = 1/$request->maks_sedang*100;
-		$rasio_besar = 1/$request->maks_besar*100;
+		$produk->update($request->all());
+		$rasio_kecil = 1/$request->maks_kecil;
+		$rasio_sedang = 1/$request->maks_sedang;
+		$rasio_besar = 1/$request->maks_besar;
 		DB::table('produk')->where('id', $id)->update(
 			[
 				'rasio_besar' => $rasio_besar,

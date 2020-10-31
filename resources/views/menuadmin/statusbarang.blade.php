@@ -12,7 +12,7 @@
 <div class="container-fluid">
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         <li class="nav-item col-sm-8 col-xl-3 col-lg-6">
-            <a class="" id="pills-bayar-tab" data-toggle="pill" href="#pills-bayar" role="tab"
+            <a id="pills-bayar-tab" data-toggle="pill" href="#pills-bayar" role="tab"
                 aria-controls="pills-bayar" aria-selected="true">
                 <div class="card o-hidden">
                     <div class="bg-secondary b-r-4 card-body">
@@ -27,8 +27,8 @@
             </a>
         </li>
         <li class="nav-item col-sm-8 col-xl-3 col-lg-6">
-            <a id="pills-proses-tab" data-toggle="pill" href="#pills-proses"
-                role="tab" aria-controls="pills-proses" aria-selected="false">
+            <a id="pills-proses-tab" data-toggle="pill" href="#pills-proses" role="tab"
+             aria-controls="pills-proses" aria-selected="true">
                 <div class="card o-hidden">
                     <div class="bg-primary b-r-4 card-body">
                         <div class="media static-top-widget">
@@ -42,8 +42,8 @@
             </a>
         </li>
         <li class="nav-item col-sm-8 col-xl-3 col-lg-6">
-            <a id="pills-pengiriman-tab" data-toggle="pill" href="#pills-pengiriman"
-                role="tab" aria-controls="pills-pengiriman" aria-selected="false">
+            <a id="pills-pengiriman-tab" data-toggle="pill" href="#pills-pengiriman" role="tab"
+                aria-controls="pills-pengiriman" aria-selected="true">
                 <div class="card o-hidden">
                     <div class="bg-warning b-r-4 card-body">
                         <div class="media static-top-widget">
@@ -57,8 +57,8 @@
             </a>
         </li>
         <li class="nav-item col-sm-8 col-xl-3 col-lg-6">
-            <a id="pills-selesai-tab" data-toggle="pill" href="#pills-selesai"
-                role="tab" aria-controls="pills-selesai" aria-selected="false">
+            <a id="pills-selesai-tab" data-toggle="pill" href="#pills-selesai" role="tab" aria-controls="pills-selesai"
+                aria-selected="true">
                 <div class="card o-hidden">
                     <div class="bg-success b-r-4 card-body">
                         <div class="media static-top-widget">
@@ -74,16 +74,16 @@
     </ul>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-bayar" role="tabpanel" aria-labelledby="pills-bayar-tab">
-           @include('viewtracking.belumdibayar')
+            @include('viewtracking.belumdibayar')
         </div>
         <div class="tab-pane fade" id="pills-proses" role="tabpanel" aria-labelledby="pills-proses-tab">
-            <p class="mb-0 m-t-30">diproses</p>
+        @include('viewtracking.proses')
         </div>
         <div class="tab-pane fade" id="pills-pengiriman" role="tabpanel" aria-labelledby="pills-pengiriman-tab">
-            <p class="mb-0 m-t-30">pengiriman</p>
+        @include('viewtracking.pengiriman')
         </div>
         <div class="tab-pane fade" id="pills-selesai" role="tabpanel" aria-labelledby="pills-selesai-tab">
-            <p class="mb-0 m-t-30">selesai</p>
+        @include('viewtracking.selesai')
         </div>
     </div>
 

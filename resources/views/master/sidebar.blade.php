@@ -37,12 +37,16 @@
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('user')}}"><i
                             data-feather="users"> </i><span>User</span></a></li>
+
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('customer')}}"><i
                             data-feather="user"> </i><span>Customer</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('status')}}"><i
+                            data-feather="flag"> </i><span>Status Barang</span></a></li>
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('pos')}}"><i
+                            data-feather="shopping-cart"> </i><span>Point Of Sale</span></a></li>
                 <li class="sidebar-list">
                     <label class="badge badge-danger">New</label><a class="sidebar-link sidebar-title" href="#"><i
                             data-feather="box"></i><span>Produk</span></a>
-
                     <ul class="sidebar-submenu">
                         @foreach($data_kategori as $kategori)
                         <li><a href="{{route('produk', $kategori->id)}}">{{$kategori->nama}}</a></li>
@@ -53,10 +57,12 @@
                         href="{{route('pengemasan')}}"><i data-feather="package"> </i><span>Pengemasan</span></a></li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('ongkir')}}"><i
                             data-feather="truck"> </i><span>Ongkos Kirim</span></a></li>
+
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('status')}}"><i
                             data-feather="flag"> </i><span>Status Barang</span></a></li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav" href="{{route('berita')}}"><i
                             data-feather="file"> </i><span>Berita</span></a></li>
+
             </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

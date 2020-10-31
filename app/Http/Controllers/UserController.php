@@ -24,8 +24,8 @@ class UserController extends Controller
         $validator = Validator::make(
             $request->all(),
             array(
-                "username"=>"unique:user,username",
-                "nama"=>"unique:user,nama"
+                "username"=>"unique:users,username",
+                "nama"=>"unique:users,nama"
             )
         );
         if ($validator->passes()) {

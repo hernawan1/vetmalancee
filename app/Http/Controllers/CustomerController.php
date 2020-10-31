@@ -27,7 +27,6 @@ class CustomerController extends Controller
             $request->all(),
             array(
                 "email"=>"unique:customer,email",
-                "telepon"=>"unique:customer,telepon"
             )
         );
         if ($validator->passes()) {
